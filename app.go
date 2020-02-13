@@ -4,11 +4,16 @@ import (
 	"log"
 	"net/http"
 
+	"os"
+
 	"github.com/gorilla/mux"
 )
 
 func main() {
-	port := ":8010"
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
 	router := mux.NewRouter()
 	router.HandleFunc("/", sayHai).Methods("GET")
 	router.HandleFunc("/getEmployees", getEmployees).Methods("GET")
