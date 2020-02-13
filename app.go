@@ -20,5 +20,5 @@ func main() {
 	router.HandleFunc("/getEmployeesv2", getEmployees1).Methods("GET")
 	router.HandleFunc("/createEmployee", createEmployee).Methods("POST")
 	log.Println("server up and running on port " + port)
-	log.Fatalln(http.ListenAndServe(port, router))
+	log.Fatalln(http.ListenAndServe(":"+port, router))
 }
